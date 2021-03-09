@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Covid Vaccination</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="/css/mdb.min.css" />
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="/css/admin.css" />
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<body>
+<!--Main Navigation-->
+<header>
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a href="#" onclick="getAllBranch()" id="allBranch" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>All Branch</span>
+        </a>
+        <a href="#" onclick="getAllVaccine()"  id="allVaccine" class="list-group-item list-group-item-action py-2 ripple">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Vaccines Master</span>
+        </a>
+
+        <a href="#" onclick="getAllVaccineBranchWise()" id="allVaccineByBranch"  class="list-group-item list-group-item-action py-2 ripple"><i
+                class="fas fa-lock fa-fw me-3"></i><span>Available Vaccine</span></a>
+
+        <a href="#" onclick="scheduleVaccinationUI()"  id="schedleVaccination" class="list-group-item list-group-item-action py-2 ripple"><i
+                class="fas fa-lock fa-fw me-3"></i><span>Schedule Vaccination</span></a>
+
+
+        <a href="#" onclick="doVaccinationUI()"  id="doVaccination" class="list-group-item list-group-item-action py-2 ripple"><i
+                class="fas fa-lock fa-fw me-3"></i><span>Do Vaccination</span></a>
+
+        <a href="#" onclick="getAppliedVaccine()"  id="getAppliedVaccine" class="list-group-item list-group-item-action py-2 ripple"><i
+                class="fas fa-lock fa-fw me-3"></i><span>Applied Vaccine </span></a>
+
+
+      </div>
+    </div>
+
+
+  </nav>
+  <!-- Sidebar -->
+
+  <!-- Navbar -->
+  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+              aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+        <strong> Vaccination Application</strong>
+      </a>
+      <!-- Search form -->
+      <form class="d-none d-md-flex input-group w-auto my-auto">
+
+      </form>
+
+      <!-- Right links -->
+
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px">
+  <div class="container pt-4">
+
+    <!--Section: Sales Performance KPIs-->
+    <section class="mb-4" id="mainSection" style="margin-left: 84px;">
+      <div class="card">
+        <div class="card-header text-center py-3">
+          <h5 class="mb-0 text-center">
+            <strong>Sales Performance KPIs</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover text-nowrap">
+              <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Product Detail Views</th>
+                <th scope="col">Unique Purchases</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Product Revenue</th>
+                <th scope="col">Avg. Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">Value</th>
+                <td>18,492</td>
+                <td>228</td>
+                <td>350</td>
+                <td>$4,787.64</td>
+                <td>$13.68</td>
+              </tr>
+              <tr>
+                <th scope="row">Percentage change</th>
+                <td>
+                      <span class="text-danger">
+                        <i class="fas fa-caret-down me-1"></i><span>-48.8%%</span>
+                      </span>
+                </td>
+                <td>
+                      <span class="text-success"><i class="fas fa-caret-up me-1"></i><span>14.0%</span></span>
+                </td>
+                <td>
+                      <span class="text-success">
+                        <i class="fas fa-caret-up me-1"></i><span>46.4%</span>
+                      </span>
+                </td>
+                <td>
+                      <span class="text-success">
+                        <i class="fas fa-caret-up me-1"></i><span>29.6%</span>
+                      </span>
+                </td>
+                <td>
+                      <span class="text-danger">
+                        <i class="fas fa-caret-down me-1"></i><span>-11.5%</span>
+                      </span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Absolute change</th>
+                <td>
+                      <span class="text-danger">
+                        <i class="fas fa-caret-down me-1"></i><span>-17,654</span>
+                      </span>
+                </td>
+                <td>
+                      <span class="text-success">
+                        <i class="fas fa-caret-up me-1"></i><span>28</span>
+                      </span>
+                </td>
+                <td>
+                      <span class="text-success">
+                        <i class="fas fa-caret-up me-1"></i><span>111</span>
+                      </span>
+                </td>
+                <td>
+                      <span class="text-success">
+                        <i class="fas fa-caret-up me-1"></i><span>$1,092.72</span>
+                      </span>
+                </td>
+                <td>
+                      <span class="text-danger">
+                        <i class="fas fa-caret-down me-1"></i><span>$-1.78</span>
+                      </span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Section: Sales Performance KPIs-->
+
+    <section class="mb-4" id="addRecordSection" style="margin-left: 84px;">
+
+    </section>
+
+
+
+
+
+
+  </div>
+</main>
+<!--Main layout-->
+<!-- MDB -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!-- Custom scripts -->
+<script type="text/javascript" src="js/admin.js"></script>
+
+</body>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+getAllBranch();
+
+
+
+});
+
+function setMenuActive(menuId){
+  $(".list-group-item").removeClass("active");
+  $("#"+menuId).addClass("active");
+
+}
+
+
+
+
+
+function getAllBranch(){
+setMenuActive("allBranch");
+$("#mainSection").empty();
+
+   var htmls = '<div class="card"><div class="card-header text-center py-3"><h5 class="mb-0 text-center"> <strong>All Branches</strong></h5> </div>';
+   htmls  = htmls+ '<div class="card-body">';
+   htmls  = htmls+ '<div class="table-responsive">';
+
+   htmls  = htmls+ ' <table class="table table-hover text-nowrap">';
+   htmls  = htmls+ '<thead>';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<th scope="col">Branch Id</th>';
+   htmls  = htmls+ '<th scope="col">Branch Name</th>';
+   htmls  = htmls+ '<th scope="col">Branch Address</th>';
+
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</thead>';
+   htmls  = htmls+ '<tbody id="tableBody">';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<td></td><td></td>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</tbody>';
+
+   htmls  = htmls+ '</div>';
+
+
+   $("#mainSection").append(htmls);
+   addBranchUI()
+
+
+  $.get("/getAllBranch", function(data, status){
+       if(status == "success"){
+	   $("#tableBody").empty();
+	    var tblTr = "";
+		var obj = data; //jQuery.parseJSON(data);
+		for(var i =0; i<obj.length; i++){
+		  tblTr = tblTr + "<tr><td>"+obj[i].id+"</td> <td> "+obj[i].branchName+"</td>  <td> "+obj[i].branchAddress+"</td></tr>"
+		}
+
+		$("#tableBody").append(tblTr);
+	   }
+    });
+}
+
+function getAllVaccine(){
+
+setMenuActive("allVaccine");
+
+   $("#mainSection").empty();
+
+   var htmls = '<div class="card"><div class="card-header text-center py-3"><h5 class="mb-0 text-center"> <strong>All Vaccines</strong></h5> </div>';
+   htmls  = htmls+  '<div class="card-body">';
+   htmls  = htmls+ '<div class="table-responsive">';
+
+   htmls  = htmls+ ' <table class="table table-hover text-nowrap">';
+   htmls  = htmls+ '<thead>';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<th scope="col">Vaccine Id</th>';
+   htmls  = htmls+ '<th scope="col">VAccine Name</th>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</thead>';
+   htmls  = htmls+ '<tbody id="tableBody">';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<td></td><td></td>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</tbody>';
+
+   htmls  = htmls+ '</div>';
+
+   $("#mainSection").append(htmls);
+   addBranchVaccineUI();
+
+
+
+  $.get("/getAllVaccine", function(data, status){
+       if(status == "success"){
+	   $("#tableBody").empty();
+	    var tblTr = "";
+		var obj = data ;// jQuery.parseJSON(data);
+		for(var i =0; i<obj.length; i++){
+		  tblTr = tblTr + "<tr><td>"+obj[i].id+"</td> <td> "+obj[i].vaccineName+"</td></tr>"
+		}
+		$("#tableBody").append(tblTr);
+	   }
+    });
+}
+
+
+function addBranchUI(){
+
+$("#addRecordSection").empty();
+	var htmls = "";
+	htmls  =htmls + '<div class="card">'+
+           '<div class="card-header text-center py-3">'+
+            '<h5 class="mb-0 text-center">'+
+              '<strong>Add Branches</strong>'+
+            '</h5>'+
+          '</div>'+
+          '<div class="card-body">'+
+                '<div class="form-group row">'+
+                    '<div class="col-sm-6">'+
+                        '<label for="inputContactNumber">Branche Name</label>'+
+                        '<input type="text" class="form-control" id="inputBranchName" placeholder="">'+
+                    '</div>'+
+                    '<div class="col-sm-6">'+
+                        '<label for="inputWebsite">Branch Address</label>'+
+                        '<input type="text" class="form-control" id="inputBranchAddress" placeholder="">'+
+                    '</div>'+
+                '</div>'+
+                '<button type="button" class="btn btn-primary px-4 float-left"  style="float: right; top: 9px;"  onclick="addBranch()">Save</button>'+
+            '</form>'+
+		  '</div>'+
+		  '</div>'
+		  $("#addRecordSection").append(htmls);
+
+}
+
+function addBranch(){
+ var branchName  = $("#inputBranchName").val();
+ var branchAddress  = $("#inputBranchAddress").val();
+ var data  = {"branchName":branchName,"branchAddress":branchAddress }
+ var url  = "/addBranch";
+ $.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url :url,
+			data : JSON.stringify(data),
+			dataType : 'json',
+			cache : false,
+			timeout : 600000,
+			success : function(data) {
+				getAllBranch();
+			},
+			error : function(e) {
+
+				alert("Something went wrong")
+
+			}
+		});
+
+}
+
+
+
+
+function addBranchVaccineUI(){
+
+$("#addRecordSection").empty();
+	var htmls = "";
+	htmls  =htmls + '<div class="card">'+
+           '<div class="card-header text-center py-3">'+
+            '<h5 class="mb-0 text-center">'+
+              '<strong>Add Vaccine</strong>'+
+            '</h5>'+
+          '</div>'+
+          '<div class="card-body">'+
+                '<div class="form-group row">'+
+                    '<div class="col-sm-6">'+
+                        '<label for="inputContactNumber">Vaccine Name</label>'+
+                        '<input type="text" class="form-control" id="inputVaccine" placeholder="">'+
+                    '</div>'+
+                    '<div class="col-sm-6" style="display:none;">'+
+                        '<label for="inputWebsite">Branch Address</label>'+
+                        '<input type="text" class="form-control" id="" placeholder="">'+
+                    '</div>'+
+                '</div>'+
+                '<button type="button" class="btn btn-primary px-4 float-left"  style="float: right; top: 9px;"  onclick="addVaccine()">Save</button>'+
+            '</form>'+
+		  '</div>'+
+		  '</div>'
+		  $("#addRecordSection").append(htmls);
+
+}
+
+function  addVaccine(){
+ var vaccineName  = $("#inputVaccine").val();
+ var data  = {"vaccineName":vaccineName };
+ var url  = "/addVaccine";
+ $.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url :url,
+			data : JSON.stringify(data),
+			dataType : 'json',
+			cache : false,
+			timeout : 600000,
+			success : function(data) {
+                    getAllVaccine();
+
+			},
+			error : function(e) {
+
+				alert("Something went wrong")
+
+			}
+		});
+
+}
+
+
+
+
+
+function getAllVaccineBranchWise(){
+
+setMenuActive("allVaccineByBranch");
+
+$("#mainSection").empty();
+
+   var htmls = '<div class="card"><div class="card-header text-center py-3"><h5 class="mb-0 text-center"> <strong>Available Vaccine Branch Wise</strong></h5> </div>';
+   htmls  = htmls+  '<div class="card-body">';
+   htmls  = htmls+ '<div class="table-responsive">';
+
+   htmls  = htmls+ ' <table class="table table-hover text-nowrap">';
+   htmls  = htmls+ '<thead>';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<th scope="col">Branch Name( ID)</th>';
+   htmls  = htmls+ '<th scope="col">Vaccine Name( ID)</th>';
+   htmls  = htmls+ '<th scope="col">Available Vaccine</th>';
+   htmls  = htmls+ '<th scope="col">Available Timing</th>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</thead>';
+   htmls  = htmls+ '<tbody id="tableBody">';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<td></td><td></td>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</tbody>';
+
+   htmls  = htmls+ '</div>';
+
+   $("#mainSection").append(htmls);
+   assigneVccineUI();
+
+
+
+  $.get("/getAllVaccineStock", function(data, status){
+       if(status == "success"){
+	   $("#tableBody").empty();
+	    var tblTr = "";
+		var obj = data ;// jQuery.parseJSON(data);
+		for(var i =0; i<obj.length; i++){
+		  tblTr = tblTr + "<tr><td>"+obj[i].vaccineBranch.branchName+"  ( "+obj[i].vaccineBranch.id+" )</td> <td> "+obj[i].vaccine.vaccineName+" ("+ obj[i].vaccine.id+") </td> <td> "+obj[i].vaccineQuantity+"</td><td> "+obj[i].availableTiming+"</td></tr>"
+		}
+		$("#tableBody").append(tblTr);
+	   }
+    });
+}
+
+function assigneVccineUI(){
+
+$("#addRecordSection").empty();
+	var htmls = "";
+	htmls  =htmls + '<div class="card">'+
+           '<div class="card-header text-center py-3">'+
+            '<h5 class="mb-0 text-center">'+
+              '<strong>Assigne Vaccine Quantity to Branch</strong>'+
+            '</h5>'+
+          '</div>'+
+          '<div class="card-body">'+
+                '<div class="form-group row">'+
+                    '<div class="col-sm-6">'+
+                        '<label for="inputContactNumber">Branch Id</label>'+
+                        '<input type="number" class="form-control" id="inputBranchId" placeholder="Please enter branch Id only">'+
+                    '</div>'+
+                    '<div class="col-sm-6" style="">'+
+                        '<label for="inputWebsite">Vaccine Id </label>'+
+                        '<input type="number"  class="form-control" id="inputVaccineId" placeholder="Please enter vaccine Id only">'+
+                    '</div>'+
+					'<div class="col-sm-6" style="">'+
+                        '<label for="inputWebsite">Vaccine Quantity</label>'+
+                        '<input type="number"  class="form-control" id="vaccineCount" placeholder="Please enter vaccine quantity">'+
+                    '</div>'+
+                '</div>'+
+
+                '</div>'+
+                '<button type="button" class="btn btn-primary px-4 float-left"  style="float: right; top: 9px;"  onclick="assigneVaccine()">Assigne</button>'+
+            '</form>'+
+		  '</div>'+
+		  '</div>'
+		  $("#addRecordSection").append(htmls);
+
+}
+
+function assigneVaccine(){
+  var branchId  = $("#inputBranchId").val();
+  var vaccineId  = $("#inputVaccineId").val();
+  var vaccineCount  = $("#vaccineCount").val();
+
+  var data  = {"vaccineBranch":{"id":branchId},"vaccine":{"id": vaccineId}, "vaccineQuantity":vaccineCount  };
+  var url  = "/addVaccineStock"
+   $.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url :url,
+			data : JSON.stringify(data),
+			dataType : 'json',
+			cache : false,
+			timeout : 600000,
+			success : function(data) {
+				getAllVaccineBranchWise();
+			},
+			error : function(e) {
+
+				alert("Something went wrong")
+
+			}
+		});
+
+}
+
+function scheduleVaccinationUI(){
+
+setMenuActive("schedleVaccination");
+
+$("#mainSection").empty();
+$("#addRecordSection").empty();
+
+var htmls = "";
+	htmls  =htmls + '<div class="card">'+
+           '<div class="card-header text-center py-3">'+
+            '<h5 class="mb-0 text-center">'+
+              '<strong>Schedule For Vaccination</strong>'+
+            '</h5>'+
+          '</div>'+
+          '<div class="card-body">'+
+                '<div class="form-group row">'+
+                    '<div class="col-sm-6">'+
+                        '<label for="inputContactNumber">Patient Name </label>'+
+                        '<input type="text" class="form-control" id="inputPatientName" placeholder="Patient  Name">'+
+                    '</div>'+
+                    '<div class="col-sm-6" style="">'+
+                        '<label for="inputWebsite">Patient EmailId</label>'+
+                        '<input type="text"  class="form-control" id="inputEmail" placeholder="Email Id">'+
+                    '</div>'+
+                '</div>'+
+
+				'<div class="form-group row">'+
+                    '<div class="col-sm-6">'+
+                        '<label for="inputContactNumber">Branch Id</label>'+
+                        '<input type="number" class="form-control" id="inputBranchId" placeholder="Please branch Id only">'+
+                    '</div>'+
+                    '<div class="col-sm-6" style="">'+
+                        '<label for="inputWebsite">Vaccine Id</label>'+
+                        '<input type="number"  class="form-control" id="inputVaccineId" placeholder="Please vaccine Id only">'+
+                    '</div>'+
+                '</div>'+
+
+                '</div>'+
+                '<button type="button" class="btn btn-primary px-4 float-left"  style="float: right; top: 9px;"  onclick="scheDeuleVaccination()">Assigne</button>'+
+            '</form>'+
+		  '</div>'+
+		  '</div>'
+		  $("#addRecordSection").append(htmls);
+}
+
+function scheDeuleVaccination(){
+
+  var branchId  = $("#inputBranchId").val();
+  var vaccineId  = $("#inputVaccineId").val();
+ var patientName  = $("#inputPatientName").val();
+ var emailId   = $("#inputEmail").val();
+  var data  = {"vaccineBranch":{"id":branchId},"vaccine":{"id": vaccineId}, "patient":{"patientName":patientName , "emailId": emailId}  };
+  var url  = "/scheduleVaccination"
+   $.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url :url,
+			data : JSON.stringify(data),
+			dataType : 'json',
+			cache : false,
+			timeout : 600000,
+			success : function(data) {
+				alert(data.msg);
+			},
+			error : function(e) {
+
+				alert("Something went wrong")
+
+			}
+		});
+
+
+}
+
+function doVaccinationUI(){
+setMenuActive("doVaccination");
+   $("#mainSection").empty();
+
+   var htmls = '<div class="card"><div class="card-header text-center py-3"><h5 class="mb-0 text-center"> <strong>All Patient Branch wise </strong></h5> </div>';
+   htmls  = htmls+  '<div class="card-body">';
+   htmls  = htmls+ '<div class="table-responsive">';
+
+   htmls  = htmls+ ' <table class="table table-hover text-nowrap">';
+   htmls  = htmls+ '<thead>';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<th scope="col">Vaccination Id</th>';
+   htmls  = htmls+ '<th scope="col">Patient Name</th>';
+   htmls  = htmls+ '<th scope="col">Branch Name (ID)</th>';
+   htmls  = htmls+ '<th scope="col">Vaccine Name</th>';
+   htmls  = htmls+ '<th scope="col">Vaccination Time</th>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</thead>';
+   htmls  = htmls+ '<tbody id="tableBody">';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<td></td><td></td>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</tbody>';
+
+   htmls  = htmls+ '</div>';
+
+   $("#mainSection").append(htmls);
+   BranchVaccinationUI();
+
+
+
+  $.get("/getAllScheduledBranch", function(data, status){
+       if(status == "success"){
+	   $("#tableBody").empty();
+	    var tblTr = "";
+		var obj = data ;// jQuery.parseJSON(data);
+		for(var i =0; i<obj.length; i++){
+		  tblTr = tblTr + "<tr><td>"+obj[i].id+"</td>  <td> "+obj[i].patient.patientName+"</td>   <td> "+obj[i].vaccineBranch.branchName+" ("+obj[i].vaccineBranch.id+") </td> <td> "+obj[i].vaccine.vaccineName+"  </td>  <td> "+obj[i].vaccineTime+"</td> </tr>"
+		}
+		$("#tableBody").append(tblTr);
+	   }
+    });
+
+}
+
+
+function BranchVaccinationUI(){
+
+$("#addRecordSection").empty();
+	var htmls = "";
+	htmls  =htmls + '<div class="card">'+
+           '<div class="card-header text-center py-3">'+
+            '<h5 class="mb-0 text-center">'+
+              '<strong>Do Vaccination</strong>'+
+            '</h5>'+
+          '</div>'+
+          '<div class="card-body">'+
+                '<div class="form-group row">'+
+                    '<div class="col-sm-6">'+
+                        '<label for="inputVaccinationId">Branch Id </label>'+
+                        '<input type="text" class="form-control" id="inputBranchId" placeholder="Please enter branch Id">'+
+                    '</div>'+
+                    '<div class="col-sm-6" style="display:none;">'+
+                        '<label for="inputWebsite">Branch Address</label>'+
+                        '<input type="text" class="form-control" id="" placeholder="">'+
+                    '</div>'+
+                '</div>'+
+                '<button type="button" class="btn btn-primary px-4 float-left"  style="float: right; top: 9px;"  onclick="doVaccinations()">Vaccinate</button>'+
+            '</form>'+
+		  '</div>'+
+		  '</div>'
+		  $("#addRecordSection").append(htmls);
+
+}
+
+function doVaccinations(){
+var branchId = $("#inputBranchId").val();
+ var data  = {"vaccineBranch":{"id":branchId} }
+ var url  = "/doVaccination";
+ $.ajax({
+			type : "POST",
+			contentType : "application/json",
+			url :url,
+			data : JSON.stringify(data),
+			dataType : 'json',
+			cache : false,
+			timeout : 600000,
+			success : function(data) {
+				doVaccinationUI();
+			},
+			error : function(e) {
+
+				alert("Something went wrong")
+
+			}
+		});
+
+}
+
+
+function getAppliedVaccine(){
+
+setMenuActive("getAppliedVaccine");
+   $("#mainSection").empty();
+
+   var htmls = '<div class="card"><div class="card-header text-center py-3"><h5 class="mb-0 text-center"> <strong>All Applied Vaccination Branch wise</strong></h5> </div>';
+   htmls  = htmls+  '<div class="card-body">';
+   htmls  = htmls+ '<div class="table-responsive">';
+
+   htmls  = htmls+ ' <table class="table table-hover text-nowrap">';
+   htmls  = htmls+ '<thead>';
+   htmls  = htmls+ '<tr>';
+  htmls  = htmls+ '<th scope="col">Branch Name </th>';
+   htmls  = htmls+ '<th scope="col">Applied Vaccination</th>';
+   htmls  = htmls+ '<th scope="col">Confirmed Vaccination</th>';
+   htmls  = htmls+ '<th scope="col">Remaining</th>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</thead>';
+   htmls  = htmls+ '<tbody id="tableBody">';
+   htmls  = htmls+ '<tr>';
+   htmls  = htmls+ '<td></td><td></td>';
+
+   htmls  = htmls+ '</tr>';
+   htmls  = htmls+ '</tbody>';
+
+   htmls  = htmls+ '</div>';
+
+   $("#mainSection").append(htmls);
+
+   $("#addRecordSection").empty();
+
+
+
+
+  $.get("/getVaccinationReport", function(data, status){
+       if(status == "success"){
+	   $("#tableBody").empty();
+	    var tblTr = "";
+
+		var obj = data ;// jQuery.parseJSON(data);
+		$.each(data, function(key, value) {
+           tblTr = tblTr + "<tr><td> "+key+"</td>   <td> "+value.totalVaccination+"</td> <td> <span class='text-success'><i class='fas fa-caret-up me-1'></i><span> "+value.confirmedVaccination+"</span></span>  </td>  <td> "+value.remainingVaccination+" </td> </tr>"
+      });
+		$("#tableBody").append(tblTr);
+	   }
+    });
+
+}
+
+</script>
+
+</html>
+
